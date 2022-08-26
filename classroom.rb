@@ -12,4 +12,3 @@ class Classroom
     students.classroom = self
   end
 end
-
