@@ -1,5 +1,4 @@
 require './classroom'
-require './rental'
 require './creator'
 
 class App
@@ -38,20 +37,12 @@ class App
 
     case option
     when '1'
-      create_student
+      Creator.create_student(@persons)
     when '2'
-      create_teacher
+      Creator.create_teacher(@persons)
     else
       puts 'Invalid input. Try again'
     end
-  end
-
-  def create_student
-    Creator.create_student(@persons)
-  end
-
-  def create_teacher
-    Creator.create_teacher(@persons)
   end
 
   def create_book
@@ -59,25 +50,7 @@ class App
   end
 
   def create_rental
-    puts 'Select which book you want to rent by entering its number'
-    @books.each_with_index { |book, index| puts "#{index}) Title: #{book.title}, Author: #{book.author}" }
-
-    book_id = gets.chomp.to_i
-
-    puts 'Select a person from the list by its number'
-    @persons.each_with_index do |person, index|
-      puts "#{index}) [#{person.class.name}] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
-    end
-
-    person_id = gets.chomp.to_i
-
-    print 'Date: '
-    date = gets.chomp.to_s
-
-    rental = Rental.new(date, @books[book_id], @persons[person_id])
-    @rentals << rental
-
-    puts 'Rental created successfully'
+    Creator.create_rental(@persons, @books, @rentals)
   end
 
   def list_all_rentals

@@ -2,6 +2,7 @@ require './book'
 require './person'
 require './student'
 require './teacher'
+require './rental'
 
 class Creator
   def Creator.create_book(books)
@@ -46,5 +47,27 @@ class Creator
     teacher = Teacher.new(specialization, age, name)
     persons.push(teacher)
     puts 'Teacher created successfully'
+  end
+
+  def Creator.create_rental(persons, books, rentals)
+    puts 'Select which book you want to rent by entering its number'
+    books.each_with_index { |book, index| puts "#{index}) Title: #{book.title}, Author: #{book.author}" }
+
+    book_id = gets.chomp.to_i
+
+    puts 'Select a person from the list by its number'
+    persons.each_with_index do |person, index|
+      puts "#{index}) [#{person.class.name}] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
+    end
+
+    person_id = gets.chomp.to_i
+
+    print 'Date: '
+    date = gets.chomp.to_s
+
+    rental = Rental.new(date, books[book_id], persons[person_id])
+    rentals << rental
+
+    puts 'Rental created successfully'
   end
 end
