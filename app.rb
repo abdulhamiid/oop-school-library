@@ -1,9 +1,6 @@
-require './person'
-require './student'
-require './teacher'
-require './book'
 require './classroom'
 require './rental'
+require './creator'
 
 class App
   def initialize
@@ -50,47 +47,15 @@ class App
   end
 
   def create_student
-    puts 'Create a new student'
-    print 'Enter student age: '
-    age = gets.chomp.to_i
-    print 'Enter name: '
-    name = gets.chomp
-    print 'Has parent permission? [Y/N]: '
-    parent_permission = gets.chomp.downcase
-    case parent_permission
-    when 'n'
-      student = Student.new('undefined', age, name, parent_permission: false)
-      @persons << student
-      puts 'Student doesnt have parent permission, cant rent books'
-    when 'y'
-      student = Student.new('undefined', age, name, parent_permission: true)
-      @persons << student
-      puts 'Student created successfully'
-    end
+    Creator.create_student(@persons)
   end
 
   def create_teacher
-    puts 'Create a new teacher'
-    print 'Enter teacher age: '
-    age = gets.chomp.to_i
-    print 'Enter teacher name: '
-    name = gets.chomp
-    print 'Enter teacher specialization: '
-    specialization = gets.chomp
-    teacher = Teacher.new(specialization, age, name)
-    @persons.push(teacher)
-    puts 'Teacher created successfully'
+    Creator.create_teacher(@persons)
   end
 
-  def create_book()
-    puts 'Create a new book'
-    print 'Enter title: '
-    title = gets.chomp
-    print 'Enter author: '
-    author = gets
-    book = Book.new(title, author)
-    @books.push(book)
-    puts "Book #{title} created successfully."
+  def create_book
+    Creator.create_book(@books)
   end
 
   def create_rental
