@@ -5,7 +5,7 @@ require './teacher'
 require './rental'
 
 class Creator
-  def Creator.create_book(books)
+  def self.create_book(books)
     puts 'Create a new book'
     print 'Enter title: '
     title = gets.chomp
@@ -14,9 +14,9 @@ class Creator
     book = Book.new(title, author)
     books.push(book)
     puts "Book #{title} created successfully."
-  end 
+  end
 
-  def Creator.create_student(persons)
+  def self.create_student(persons)
     puts 'Create a new student'
     print 'Enter student age: '
     age = gets.chomp.to_i
@@ -36,7 +36,7 @@ class Creator
     end
   end
 
-  def Creator.create_teacher(persons)
+  def self.create_teacher(persons)
     puts 'Create a new teacher'
     print 'Enter teacher age: '
     age = gets.chomp.to_i
@@ -49,7 +49,7 @@ class Creator
     puts 'Teacher created successfully'
   end
 
-  def Creator.create_rental(persons, books, rentals)
+  def self.create_rental(persons, books, rentals)
     puts 'Select which book you want to rent by entering its number'
     books.each_with_index { |book, index| puts "#{index}) Title: #{book.title}, Author: #{book.author}" }
 

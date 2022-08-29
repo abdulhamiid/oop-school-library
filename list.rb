@@ -1,5 +1,5 @@
 class List
-  def List.list_all_rentals(rentals)
+  def self.list_all_rentals(rentals)
     print 'To see person rentals enter the person ID: '
     id = gets.chomp.to_i
 
@@ -14,12 +14,12 @@ class List
     end
   end
 
-  def List.list_all_books(books)
+  def self.list_all_books(books)
     puts 'Database is empty! Add a book.' if books.empty?
     books.each { |book| puts "[Book] Title: #{book.title}, Author: #{book.author}" }
   end
 
-  def List.list_all_persons(persons)
+  def self.list_all_persons(persons)
     puts 'Database is empty! Add a person.' if persons.empty?
     persons.each { |person| puts "[#{person.class.name}] Name: #{person.name}, Age: #{person.age}, id: #{person.id}" }
   end
