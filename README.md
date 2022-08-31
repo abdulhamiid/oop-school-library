@@ -10,7 +10,6 @@
 > In this project, I built a school library application.
 
 ## Built With
-
 - Ruby
 
 ## Getting Started
