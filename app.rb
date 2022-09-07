@@ -6,18 +6,15 @@ require_relative 'readfile'
 
 class App
   def initialize
-    @books = []
-    @persons = []
-    @rentals = []
+    @books = Loaddata.load_books
+    @persons = Loaddata.load_persons
+    @rentals =  Loaddata.load_rentals(@persons)
   end
 
   def start_console
     puts 'Welcome to my School Library!'
 
     # load data from database
-    Loaddata.load_books(@books)
-    Loaddata.load_persons(@persons)
-
     until list_of_options
       input = gets.chomp
       if input == '7'
@@ -26,6 +23,7 @@ class App
         # save data to database
         Database.writeBooks(@books)
         Database.writePersons(@persons)
+        Database.writeRentals(@rentals)
         break
       end
       option input
