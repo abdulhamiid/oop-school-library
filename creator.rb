@@ -33,6 +33,8 @@ class Creator
       student = Student.new('undefined', age, name, parent_permission: true)
       persons << student
       puts 'Student created successfully'
+    else
+      puts 'Invalid input'
     end
   end
 
@@ -64,10 +66,16 @@ class Creator
 
     print 'Date: '
     date = gets.chomp.to_s
+    book = books[book_id]
+    person = persons[person_id]
+    
+    if book && person
+      rental = Rental.new(date, book, person)
+      rentals << rental
 
-    rental = Rental.new(date, books[book_id], persons[person_id])
-    rentals << rental
-
-    puts 'Rental created successfully'
+      puts 'Rental created successfully'
+    else
+      puts 'Book or Person doesnt exist'
+    end
   end
 end
