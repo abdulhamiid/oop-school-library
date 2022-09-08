@@ -1,23 +1,31 @@
-require './classroom'
-require './creator'
-require './list'
+require_relative 'classroom'
+require_relative 'creator'
+require_relative 'list'
+require_relative 'database'
+require_relative 'readfile'
 
 class App
   def initialize
-    @books = []
-    @persons = []
-    @rentals = []
+    @books = Loaddata.load_books
+    @persons = Loaddata.load_persons
+    @rentals = Loaddata.load_rentals(@books, @persons)
   end
 
   def start_console
     puts 'Welcome to my School Library!'
+
+    # load data from database
     until list_of_options
       input = gets.chomp
       if input == '7'
         puts 'Thank You for using my School Library!'
+
+        # save data to database
+        Database.write_books(@books)
+        Database.write_persons(@persons)
+        Database.write_rentals(@rentals)
         break
       end
-
       option input
     end
   end
