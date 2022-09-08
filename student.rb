@@ -1,7 +1,7 @@
-require './person'
+require_relative 'person'
 
 class Student < Person
-  attr_reader :classroom
+  attr_accessor :classroom
 
   def initialize(classroom, age, name = 'Unknown', parent_permission: false)
     super(age, name, parent_permission: parent_permission)
