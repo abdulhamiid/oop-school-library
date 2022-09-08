@@ -1,21 +1,21 @@
 require 'json'
 
 class Database
-  def self.writeBooks(books)
+  def self.write_books(books)
     # write to file
-    booksRecord = []
+    books_record = []
     File.write('./data/books.json', []) unless File.exist?('./data/books.json')
-    books.each { |book| booksRecord << {title: book.title, author: book.author} }
-    data = JSON.generate(booksRecord)
-    File.write("data/books.json", data)
+    books.each { |book| books_record << { title: book.title, author: book.author } }
+    data = JSON.generate(books_record)
+    File.write('data/books.json', data)
   end
 
-  def self.writePersons(persons)
+  def self.write_persons(persons)
     # write to file
-    personsRecord = []
+    persons_record = []
     File.write('./data/persons.json', []) unless File.exist?('./data/persons.json')
     persons.each do |person|
-      personsRecord << {
+      persons_record << {
         type: person.class,
         age: person.age,
         name: person.name,
@@ -23,25 +23,25 @@ class Database
         parent_permission: person.can_use_service?
       }
     end
-    data = JSON.generate(personsRecord)
-    File.write("data/persons.json", data)
+    data = JSON.generate(persons_record)
+    File.write('data/persons.json', data)
   end
 
-  def self.writeRentals(rentals)
-   #write rental
-   rentalRecords =[]
-   File.write('data/rentals.json', []) unless File.exist?('data/rentals.json')
-   rentals.each do | rental | 
-     rentalRecords << {
-      person: rental.person.name,
-      id: rental.person.id,
-      age: rental.person.age,
-      book: rental.book.title,
-      date: rental.date,
-      author:rental.book.author
-     }
-   end
-    dataJson = JSON.generate(rentalRecords)
-    File.write('data/rentals.json',dataJson)
+  def self.write_rentals(rentals)
+    # write rental
+    rental_records = []
+    File.write('data/rentals.json', []) unless File.exist?('data/rentals.json')
+    rentals.each do |rental|
+      rental_records << {
+        person: rental.person.name,
+        id: rental.person.id,
+        age: rental.person.age,
+        book: rental.book.title,
+        date: rental.date,
+        author: rental.book.author
+      }
+    end
+    data_json = JSON.generate(rental_records)
+    File.write('data/rentals.json', data_json)
   end
 end
