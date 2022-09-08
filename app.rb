@@ -8,7 +8,7 @@ class App
   def initialize
     @books = Loaddata.load_books
     @persons = Loaddata.load_persons
-    @rentals =  Loaddata.load_rentals(@persons)
+    @rentals = Loaddata.load_rentals(@books, @persons)
   end
 
   def start_console
@@ -21,9 +21,9 @@ class App
         puts 'Thank You for using my School Library!'
 
         # save data to database
-        Database.writeBooks(@books)
-        Database.writePersons(@persons)
-        Database.writeRentals(@rentals)
+        Database.write_books(@books)
+        Database.write_persons(@persons)
+        Database.write_rentals(@rentals)
         break
       end
       option input
