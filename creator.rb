@@ -68,7 +68,7 @@ class Creator
     date = gets.chomp.to_s
     book = books[book_id]
     person = persons[person_id]
-    
+
     if book && person
       rental = Rental.new(date, book, person)
       rentals << rental
