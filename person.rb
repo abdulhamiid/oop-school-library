@@ -24,8 +24,7 @@ class Person < Nameable
     is_of_age? || @parent_permission
   end
 
-  private
-
+  
   def is_of_age? # rubocop:disable Naming/PredicateName
     @age >= 18
   end
