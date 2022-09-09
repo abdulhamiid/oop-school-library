@@ -1,6 +1,6 @@
-require '../book.rb'
-require '../person.rb'
-require '../rental.rb'
+require '../book'
+require '../person'
+require '../rental'
 
 describe Rental do
   before :each do
@@ -8,7 +8,7 @@ describe Rental do
     @book = Book.new('The titanic', 'Brian Tracy')
     @rent = Rental.new('28/08/2022', @book, @person)
   end
-  
+
   context 'create rentals' do
     it 'should populate rentals in person' do
       expect(@rent.person.rentals.length).to eq(1)
@@ -26,5 +26,4 @@ describe Rental do
       expect(@rent.date).to eq('28/08/2022')
     end
   end
-
 end
