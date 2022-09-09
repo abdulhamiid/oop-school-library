@@ -16,7 +16,7 @@ class Person < Nameable
     @name
   end
 
-  def add_rental(date, book, person)
+  def add_rental(date, book, _person)
     @rentals << Rental.new(date, book, self)
   end
 
@@ -24,8 +24,7 @@ class Person < Nameable
     is_of_age? || @parent_permission
   end
 
-  
-  def is_of_age? # rubocop:disable Naming/PredicateName
+  def is_of_age?
     @age >= 18
   end
 end
