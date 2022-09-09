@@ -1,4 +1,4 @@
-require './nameable'
+require_relative 'nameable'
 
 class Person < Nameable
   attr_accessor :rentals, :age, :name, :id
@@ -16,15 +16,13 @@ class Person < Nameable
     @name
   end
 
-  def add_rental(rental)
-    @rentals << rental
+  def add_rental(date, book, _person)
+    @rentals << Rental.new(date, book, self)
   end
 
   def can_use_service?
     is_of_age? || @parent_permission
   end
-
-  private
 
   def is_of_age? # rubocop:disable Naming/PredicateName
     @age >= 18
