@@ -1,6 +1,6 @@
-require '../decorator'
-require '../teacher'
-require '../nameable'
+require_relative '../decorator'
+require_relative '../teacher'
+require_relative '../nameable'
 
 describe Decorator do
   before :each do

@@ -1,5 +1,5 @@
-require '../trimmer_decorator'
-require '../person'
+require_relative '../trimmer_decorator'
+require_relative '../person'
 
 describe TrimmerDecorator do
   before :each do

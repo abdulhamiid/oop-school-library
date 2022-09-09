@@ -1,4 +1,4 @@
-require '../person'
+require_relative '../person'
 describe Person do
   before :each do
     @person = Person.new(30, 'loman')

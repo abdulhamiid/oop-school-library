@@ -1,5 +1,5 @@
-require '../book'
-require '../teacher'
+require_relative '../book'
+require_relative '../teacher'
 
 describe Teacher do
   before :each do

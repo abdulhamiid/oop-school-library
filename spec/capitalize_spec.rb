@@ -1,5 +1,5 @@
-require '../capitalize'
-require '../person'
+require_relative '../capitalize'
+require_relative '../person'
 
 describe CapitalizeDecorator do
   before :each do
