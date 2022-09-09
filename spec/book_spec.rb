@@ -1,6 +1,4 @@
 require '../book'
-require '../rental'
-require '../person'
 describe Book do
   before :each do
     @book = Book.new('The blossom', 'Caloz')

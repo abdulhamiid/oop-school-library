@@ -1,5 +1,4 @@
 require '../person'
-require '../rental'
 describe Person do
   before :each do
     @person = Person.new(30, 'loman')
